@@ -1,0 +1,59 @@
+[33mcommit 6ae805209dbef7b7acf3c66129a445adce921c44[m[33m ([m[1;36mHEAD -> [m[1;32mfeature-databaseMongoDB[m[33m)[m
+Author: mradrian <mr.podkalicki.adrian94@gmail.com>
+Date:   Wed Feb 19 20:52:47 2020 +0100
+
+    add keys.js to gitignore
+
+[33mcommit 921713ec8633d706f816b0c3e2c8a4d1b660ed24[m
+Author: mradrian <mr.podkalicki.adrian94@gmail.com>
+Date:   Wed Feb 19 20:25:55 2020 +0100
+
+    configuration of  engine and scripts in  package.json
+
+[33mcommit 1e9e4f7012c210ca01c10359f019492103eb3324[m
+Author: mradrian <mr.podkalicki.adrian94@gmail.com>
+Date:   Wed Feb 19 19:38:52 2020 +0100
+
+    set port number and dynamic port
+
+[33mcommit faed557718b88ffdc53de2d730f29d0bd0dd07a2[m[33m ([m[1;31morigin/developer[m[33m, [m[1;32mdeveloper[m[33m)[m
+Author: mradrian <mr.podkalicki.adrian94@gmail.com>
+Date:   Wed Feb 19 18:02:49 2020 +0100
+
+    add express lib to dependencies
+
+[33mcommit f1989faef322880c332c7747a615d09cd2b2ea03[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: mradrian <mr.podkalicki.adrian94@gmail.com>
+Date:   Wed Feb 19 17:48:36 2020 +0100
+
+    install express lib
+
+[33mcommit 781e96379666c26099655aa664e92ad58f508fbb[m
+Author: mrpodkalicki <mr.podkalicki.adrian94@gmail.com>
+Date:   Wed Feb 19 16:01:14 2020 +0100
+
+    add index.js
+
+[33mcommit eda293a03dbc40c35be5f3ae4f477c5585d26d00[m
+Author: mrpodkalicki <mr.podkalicki.adrian94@gmail.com>
+Date:   Wed Feb 19 16:00:26 2020 +0100
+
+    client side init
+
+[33mcommit e22be00b7d807c02feb20214a7dd553ec14a31dd[m
+Author: mrpodkalicki <mr.podkalicki.adrian94@gmail.com>
+Date:   Wed Feb 19 15:59:45 2020 +0100
+
+    gitignore file init
+
+[33mcommit 58bc4b4c5111ac0789760ea723b0b25fe4cde771[m
+Author: mrpodkalicki <mr.podkalicki.adrian94@gmail.com>
+Date:   Wed Feb 19 15:35:00 2020 +0100
+
+    server side init
+
+[33mcommit c506d930301e51a8d6c1a9fe016f1d132cfddfeb[m
+Author: mrpodkalicki <mr.podkalicki.adrian94@gmail.com>
+Date:   Wed Feb 19 15:34:27 2020 +0100
+
+    README file init
