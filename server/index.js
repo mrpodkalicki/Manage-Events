@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-require('./mongooseDB/coonectToDB');
+const runConnectToDb = require('./mongooseDB/coonectToDB');
+
+runConnectToDb();
 
 
 

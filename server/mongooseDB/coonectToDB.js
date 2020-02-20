@@ -3,19 +3,25 @@ const keys = require('../config/keys');
 
 
 
-function connectToDB() {
-    try {
-         mongoose.connect(keys.mongoURI, {
-             useNewUrlParser: true,
-             useUnifiedTopology: true,
+function  connectToDB() {
+    try{
+        mongoose.connect(keys.mongoURI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
         });
 
-            console.log('Connected to MongoDB...');
-    } catch (err) {
+        console.log('Connected to MongoDB...');
+    }catch (err) {
         console.error('Connection failed...', err);
     }
+
 }
-connectToDB()
+
+const runConnectToDb = async() =>{
+    await connectToDB()
+};
+
+module.exports = runConnectToDb;
 
 
 
