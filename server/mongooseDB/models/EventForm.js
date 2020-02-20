@@ -41,7 +41,7 @@ const eventSchema = new Schema({
         minlength: 5,
         maxlength: 256
     },
-    date_created : {
+    eventData : {
         type: Date,
     },
     tags : {
