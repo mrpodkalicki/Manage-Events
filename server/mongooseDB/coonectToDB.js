@@ -7,10 +7,6 @@ const   connectToDB = async () =>  {
             useMongoClient: true,
 
         });
-
-
-
-
 };
 
 const  runConnectToDb =async() =>{
