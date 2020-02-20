@@ -1,19 +1,16 @@
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
-const   connectToDB = async () =>  {
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}
 
-        mongoose.connect(keys.mongoURI, {
-            useMongoClient: true,
-
-        });
+module.exports =  connectToMongoDB = async () =>  {
+       await  mongoose.connect(keys.mongoURI, options);
 };
 
-const  runConnectToDb =async() =>{
-        await connectToDB()
-};
 
-module.exports = runConnectToDb;
 
 
 

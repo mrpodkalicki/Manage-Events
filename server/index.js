@@ -1,17 +1,13 @@
 const express = require('express');
 const app = express();
-const runConnectToDb = require('./mongooseDB/coonectToDB');
+const connectToMongoDB = require('./mongooseDB/coonectToDB');
 
-runConnectToDb().then(
-    console.log('Connected to MongoDBtyujykuijl...')
-
-).catch(err => {
-    console.log(err)
+connectToMongoDB(
+    ).then(
+        console.log('Connected to MongoDB')
+    ).catch(err => {
+        console.log(err)
 });
-
-
-
-
 
 
 
