@@ -31,6 +31,7 @@ const eventSchema = new Schema({
         dateCreateEvent: {
             type:Date,
             required: true,
+            default: Date.now
         }
     },
     tags: {
