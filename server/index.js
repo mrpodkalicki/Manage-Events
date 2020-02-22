@@ -1,6 +1,10 @@
+"use strict"
 const express = require('express');
 const app = express();
 const connectToMongoDB = require('./mongooseDB/coonectToDB');
+const eventRoute = require('./routes/events.routes')
+
+
 
 connectToMongoDB(
     ).then(
@@ -9,6 +13,7 @@ connectToMongoDB(
         console.log(err)
 });
 
+eventRoute()
 
 
 const PORT  = process.env.PORT || 5000;
