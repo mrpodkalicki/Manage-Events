@@ -4,13 +4,17 @@ class Person {
             this.lastName = lastName;
             this.email = email;
     };
-    creatEvent(EventModel){
-        return new EventModel({
+     async creatPerson(personModel){
+         return  await new personModel({
             firstName: this.firstName,
             lastName: this.lastName,
             email: this.email
         });
     };
+
+    async saveToDb(personToSave){
+         return personToSave.save()
+     }
 }
 
-module.exports.Person = Person;
+module.exports = Person;
