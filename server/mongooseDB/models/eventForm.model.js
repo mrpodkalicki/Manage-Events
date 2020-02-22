@@ -9,11 +9,11 @@ const eventSchema = new Schema({
         minlength: 6,
         maxlength: 64
     },
-    person: {
+    personId: {
         type: mongoose.ObjectId,
         required: true,
     },
-    Data: {
+    dataInformation: {
         startHour: {
             type : String,
             minlength: 1,
@@ -25,7 +25,7 @@ const eventSchema = new Schema({
             maxlength: 5
         },
         dateWhen: {
-            type: String,
+            type: Date,
             required: true,
         },
         dateCreateEvent: {
@@ -37,7 +37,7 @@ const eventSchema = new Schema({
     tags: {
         type: String,
         required: true,
-        minlength: 15,
+        minlength: 5,
         maxlength: 512
     }
 });
