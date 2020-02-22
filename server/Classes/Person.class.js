@@ -4,9 +4,9 @@ class Person {
         this.lastName = lastName;
         this.email = email;
         this.IfExistinDB = false;
-        this.idObjInDb = null;
+        this.idObjInDb = {};
     };
-     async creatPerson(personModel){
+     async  creatPerson(personModel){
          return  await new personModel({
             firstName: this.firstName,
             lastName: this.lastName,
@@ -15,17 +15,19 @@ class Person {
     };
     async checkIfExistInDB(Model, criteria){
         await Model.find(criteria, (err, obj) => {
+            console.log( obj,'OBJJJ')
             if(obj.length === 0){
                 this.IfExistinDB = false;
             }else{
                 this.IfExistinDB = true;
-                this.idObjInDb = obj[0].id;
+                this.idObjInDb = obj[0]._id;
             }
         });
     };
     async saveToDb(schema){
         const obj = await  schema.save();
-        this.idObjInDb = obj.id;
+
+        this.idObjInDb = obj._id;
         return obj;
      };
 }
