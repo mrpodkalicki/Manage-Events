@@ -5,8 +5,8 @@ class Event {
         this.eventData = eventData;
         this.tags = tags;
     };
-    creatEvent(EventModel){
-        return new EventModel({
+    async creatEvent(EventModel){
+        return await new EventModel({
             title: this.title,
             personId: this.personId,
             eventDate: {
@@ -18,4 +18,4 @@ class Event {
         });
     };
 }
-module.exports.Event = Event;
+module.exports = Event;
