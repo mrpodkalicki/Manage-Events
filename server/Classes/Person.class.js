@@ -10,19 +10,24 @@ class Person {
          return  await new personModel({
             firstName: this.firstName,
             lastName: this.lastName,
-            email: this.email
+            email: this.email,
         });
     };
-    async checkIfExistInDB(Model){
-        await Model.find({"email": this.email}, (err, obj) => {
-            obj.length === 0 ? this.IfExistinDB = false : this.IfExistinDB = true;
-        })
-    }
-    async saveToDb(personToSave){
-        const personObj = await  personToSave.save();
-        this.idObjInDb = personObj.id;
-        return personObj
-     }
+    async checkIfExistInDB(Model, criteria){
+        await Model.find(criteria, (err, obj) => {
+            if(obj.length === 0){
+                this.IfExistinDB = false;
+            }else{
+                this.IfExistinDB = true;
+                this.idObjInDb = obj[0].id;
+            }
+        });
+    };
+    async saveToDb(schema){
+        const obj = await  schema.save();
+        this.idObjInDb = obj.id;
+        return obj;
+     };
 }
 
 module.exports = Person;
