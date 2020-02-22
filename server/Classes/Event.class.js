@@ -1,5 +1,8 @@
-class Event {
+const  Person  = require('../Classes/Person.class');
+
+class Event extends Person{
     constructor( title, personId, eventData, tags ){
+        super();
         this.title = title;
         this.personId = personId;
         this.eventData = eventData;
@@ -9,7 +12,7 @@ class Event {
         return await new EventModel({
             title: this.title,
             personId: this.personId,
-            eventDate: {
+            dataInformation: {
                 startHour:  this.eventData.startHour,
                 endHour:    this.eventData.endHour,
                 dateWhen:   this.eventData.dateWhen,
