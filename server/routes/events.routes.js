@@ -1,50 +1,54 @@
-const   Event   = require('../Classes/Event.class');
-const  Person  = require('../Classes/Person.class');
+const Event   = require('../Classes/Event.class');
+const Person  = require('../Classes/Person.class');
 const EventModel   = require('../mongooseDB/models/eventForm.model');
-const  PersonModel  = require('../mongooseDB/models/personForm.model');
+const PersonModel  = require('../mongooseDB/models/personForm.model');
 
 
+const createPersonAndSave = async (...personData) =>{
+    const [firstName, lastName, email] = personData;
+    const person = new Person(firstName, lastName, email);
+    const schemaPerson = await person.creatPerson(PersonModel);
+    await  person.checkIfExistInDB(PersonModel, {"email":person.email});
+    if(!person.IfExistinDB){
+        await person.saveToDb(schemaPerson)
+            .then(obj => console.log(`save to db person ${obj}`) );
+    }
+    return person
+};
+
+const createEventAndSAve = async ( ...eventDate ) => {
+    const [ title, personId, dataInformation, tags ] = eventDate;
+    const event = new Event( title, personId, dataInformation, tags );
+    const schemaEvent = await event.creatEvent(EventModel);
+    await event.checkIfExistInDB(EventModel,{
+        title :event.title,
+        personId: { $eq:event.personId},
+        tags: event.tags,
+        'dataInformation.startHour' : event.dataInformation.startHour,
+        'dataInformation.endHour' : event.dataInformation.endHour,
+        'dataInformation.dateWhen' : event.dataInformation.dateWhen,
+    });
+    if( !event.IfExistinDB ) {
+        await event.saveToDb( schemaEvent ).then( obj => console.log(`save Event : ${obj}` ));
+    }
+    return event;
+};
 
 const  createEvent = async ( )=> {
-    const person = new Person('pawloe', 'kszys', 'sddi@gm.pl');
-        const schemaPerson = await person.creatPerson(PersonModel);
         try{
-            await  person.checkIfExistInDB(PersonModel, {"email":person.email})
-            if(!person.IfExistinDB){
-                     await person.saveToDb(schemaPerson)
-                    .then(obj => console.log(`save to db person ${obj}`) );
-            }
-            const event = new Event(
-                "Fast and Good",
-                person.idObjInDb,
+            const personObject =  await createPersonAndSave('tomek', 'dawid', 'td@gm.pl');
+            const eventObject = await createEventAndSAve(
+                "Check your code",
+                personObject.idObjInDb,
                 {
-                    startHour: "1",
-                    endHour: "16",
-                    dateWhen: "10.12.21",
+                    startHour: '9:00',
+                    endHour: '15:00',
+                    dateWhen: '2021.11.05',
                 },
-                "#js#react")
-            const schemaEvent = await event.creatEvent(EventModel);
-            await event.checkIfExistInDB(EventModel,{
-                "title":"Fast and Good",
-                "personId":person.idObjInDb,
-                "dataInformation": {
-                    "startHour": "1",
-                    "endHour": "16",
-                    "dateWhen": "10.12.21",
-                },
-                "tags": "#js#react"
-            })
-
-            await event.saveToDb(schemaEvent).then(console.log('save'));
-            await console.log(event)
+                "#dot.net#newTech");
         }catch (err) {
-            console.log(err.message,'ERdRsR')
-        };
-}
-
-
-
-
-
+            console.log(err.message)
+        }
+};
 
 module.exports = createEvent;
