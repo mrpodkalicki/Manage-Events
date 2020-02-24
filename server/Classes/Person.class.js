@@ -14,19 +14,17 @@ class Person {
         });
     };
     async checkIfExistInDB(Model, criteria){
-        await Model.find(criteria, (err, obj) => {
-            console.log( obj,'OBJJJ')
-            if(obj.length === 0){
+        await Model.findOne(criteria, (err, obj) => {
+            if(!obj){
                 this.IfExistinDB = false;
             }else{
                 this.IfExistinDB = true;
-                this.idObjInDb = obj[0]._id;
+                this.idObjInDb = obj._id;
             }
         });
     };
     async saveToDb(schema){
         const obj = await  schema.save();
-
         this.idObjInDb = obj._id;
         return obj;
      };
