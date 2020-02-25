@@ -2,7 +2,6 @@ const  Person  = require('../Classes/Person.class');
 
 class Event {
     constructor( title, personId, dataInformation, tags ){
-
         this.title = title;
         this.personId = personId;
         this.dataInformation = dataInformation;
@@ -10,7 +9,7 @@ class Event {
         this.IfExistinDB = false;
         this.idObjInDb = {};
     };
-    async creatEvent(EventModel){
+    async creatEventSchema(EventModel){
         return await new EventModel({
             title: this.title,
             personId: this.personId,
@@ -23,8 +22,8 @@ class Event {
         });
     };
 }
-Event.prototype.checkIfExistInDB = Person.prototype.checkIfExistInDB;
-Event.prototype.saveToDb = Person.prototype.saveToDb;
+Event.checkIfExistInDBAndSave = Person.checkIfExistInDBAndSave;
+Event.saveToDb = Person.saveToDb;
 
 
 module.exports = Event;
