@@ -3,31 +3,22 @@ class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.IfExistinDB = false;
-        this.idObjInDb = {};
+        this.idObjInDb = '';
     };
-     async  creatPerson(personModel){
+     async  creatPersonSchema(personModel){
          return  await new personModel({
             firstName: this.firstName,
             lastName: this.lastName,
             email: this.email,
         });
     };
-    async checkIfExistInDB(Model, criteria){
-        await Model.findOne(criteria, (err, obj) => {
-            if(!obj){
-                this.IfExistinDB = false;
-            }else{
-                this.IfExistinDB = true;
-                this.idObjInDb = obj._id;
-            }
-        });
+    static async saveToDb(schema){
+        return await  schema.save();
     };
-    async saveToDb(schema){
-        const obj = await  schema.save();
-        this.idObjInDb = obj._id;
-        return obj;
-     };
+    static async checkIfExistInDBAndSave(Model ,criteria){
+        return   Model.findOne(criteria);
+
+    };
 }
 
 module.exports = Person;
