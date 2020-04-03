@@ -10,3 +10,4 @@
 # production
 /build
 /server/config/keys.js
+/server/package-lock.json
