@@ -11,3 +11,5 @@
 /build
 /server/config/keys.js
 /server/package-lock.json
+/client/package-lock.json
+/.idea/
